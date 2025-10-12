@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Profile\ProfileController;
+use App\Http\Controllers\Backend\Category\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,6 +27,11 @@ Route::middleware('auth')->name('dashboard.')->prefix('/dashboard')->group(funct
     Route::post('/profile-update',[ProfileController::class, 'Store'])->name('profile.store');
     Route::post('/password-update',[ProfileController::class,'passwordUpdate'])->name('password.update');
     Route::post('/image-update',[ProfileController::class,'imageUpdate'])->name('image.update');
+    
+    //Category
+    Route::get('/category-index',[CategoryController::class,'categoryIndex'])->name('category.index');
+    Route::post('/category-index',[CategoryController::class,'categoryStore'])->name('category.store');
+
 });
 
 

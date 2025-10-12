@@ -53,7 +53,7 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-
+     @stack('backend_css');
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
     <!-- Page CSS -->
@@ -142,10 +142,18 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item {{ Route::is('dashboard') ? 'active' : '' }}">
+              <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
+              </a>
+            </li>
+
+            <!--Categories-->
+            <li class="menu-item {{ Route::is('dashboard.category.index') ? 'active' : '' }}">
+              <a href="{{ route('dashboard.category.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Categories</div>
               </a>
             </li>
 
