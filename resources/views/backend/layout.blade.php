@@ -152,8 +152,9 @@
             <!--Categories-->
             <li class="menu-item {{ Route::is('dashboard.category.index') ? 'active' : '' }}">
               <a href="{{ route('dashboard.category.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Categories</div>
+                {{-- <i class="menu-icon tf-icons bx bx-home-circle"></i> --}}
+                <iconify-icon icon="tabler:category-2" width="24" height="24"></iconify-icon>&nbsp;&nbsp;
+                <div data-i18n="Categories">Categories</div>
               </a>
             </li>
 
@@ -235,7 +236,7 @@
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="{{ Auth::user()->image ? env('APP_URL') . '/storage/profile/' . Auth::user()->image : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' .  Auth::user()->name  }} " alt="Avatar" class="w-px-40 h-auto rounded-circle" />
+                      <img src="{{ Auth::user()->image ? env('APP_URL') . '/storage/profile/' . Auth::user()->image : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' . Auth::user()->name }} " alt="Avatar" class="w-px-40 h-auto rounded-circle" />
                       {{-- import the name from the users table --}}
                     </div>
                   </a>
@@ -245,7 +246,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="{{ Auth::user()->image ? env('APP_URL') . '/storage/profile/' . Auth::user()->image : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' .  Auth::user()->name  }} " alt="Avatar" class="img-fluid w-px-40 h-auto rounded-circle" />
+                              <img src="{{ Auth::user()->image ? env('APP_URL') . '/storage/profile/' . Auth::user()->image : 'https://api.dicebear.com/9.x/avataaars/svg?seed=' . Auth::user()->name }} " alt="Avatar" class="img-fluid w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -326,7 +327,7 @@
 
     <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
     <!-- endbuild -->
-
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
     <!-- Vendors JS -->
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
 
