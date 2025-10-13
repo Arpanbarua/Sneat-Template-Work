@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Category;
 
 use Illuminate\Http\Request;
+use SweetAlert2\Laravel\Swal;
 use App\Models\Category\Category;
 use App\Http\Controllers\Controller;
 
@@ -21,8 +22,31 @@ class CategoryController extends Controller
     // store
     public function categoryStore(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'title' => 'required',
+            'status' => 'required',
+        ]);
+        //dd($request->all());
+
+        $category = new Category();
+        $category->title = $request->title;
+        $category->status = $request->status;
+        $category->parent_id = $request->category;
+        $category->meta_title = $request->m_title;
+        $category->meta_description = $request->m_desc;
+        $category->save();
+
+        Swal::success([
+            'title' => 'Profile INSERTED Successfully!',
+        ]);
+
+        return back();
+        // dd($category);
+
     }
 
 
 }
+
+
+// 12:52

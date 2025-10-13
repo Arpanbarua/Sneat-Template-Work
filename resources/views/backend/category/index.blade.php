@@ -47,7 +47,12 @@
                     <label for="title">Title <span class="text-danger">*</span></label>
                     <input type="text" name="title" id="title" class="form-control mt-2 mb-3 p-3"
                         placeholder="title">
+                    @error('title')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
+
+
 
                 <div class="col-lg-6 ">
 
@@ -64,13 +69,17 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4">
                         <label for="status">Status</label>
-                        <select name="status" id="status" class="form-control mt-2 p-3">
+                        <select name="status" id="status"  class="form-control mt-2 p-3">
                             <option value="" selected disabled>
                                 -- Select Status --
                             </option>
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                         </select>
+
+                        @error('status')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="col-lg-4">
