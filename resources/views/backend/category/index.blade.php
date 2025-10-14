@@ -34,7 +34,7 @@
 @section('backend_content')
     <div class="card-header d-flex justify-content-between align-items-center">
         <h4 class="card-title mb-0">Add Category</h4>
-        <a href="#" class="btn btn-primary">Show All</a>
+        <a href="{{ route('dashboard.category.show') }}" class="btn btn-primary">Show All</a>
     </div>
 
     <div class="card-body">
@@ -69,7 +69,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4">
                         <label for="status">Status</label>
-                        <select name="status" id="status"  class="form-control mt-2 p-3">
+                        <select name="status" id="status" class="form-control mt-2 p-3">
                             <option value="" selected disabled>
                                 -- Select Status --
                             </option>
@@ -91,22 +91,24 @@
                     <div class="col-lg-4">
                         <label for="m_desc">Meta description</label>
                         {{-- <input type="text" name="m_desc" id="m_desc" class="form-control p-3 mt-2" placeholder="Meta Description"> --}}
-                        <textarea name="m_desc" id="" cols="3" rows="2" class="form-control mt-1"></textarea>
+                        <textarea name="m_desc" id="" cols="3" rows="2" class="form-control mt-1" placeholder="Write Meta Description Here"></textarea>
                     </div>
 
 
                 </div>
 
-                <div class="row align-items-center">
-                    <div class="col-lg-6 mt-3 mb-2">
-                        <label for="m_img">Choose Image</label>
-                        <input type="file" name="m_img" id="m_img" class="form-control mb-2 p-3">
-                    </div>
-
+                <div class="row align-items-end g-2">
                     <div class="col-lg-6">
-                        <button type="submit" class="btn btn-primary w-100 p-3 mt-2">Submit</button>
+                        <div class="form-group">
+                            <label for="m_img" class="form-label">Choose Image</label>
+                            <input type="file" name="m_img" id="m_img" class="form-control p-2">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <button type="submit" class="btn btn-primary w-100 p-2">Submit</button>
                     </div>
                 </div>
+
 
 
 
@@ -131,4 +133,4 @@
     </script>
 @endpush
 
-{{-- 26:00 --}}
+

@@ -34,10 +34,22 @@ class CategoryController extends Controller
         $category->parent_id = $request->category;
         $category->meta_title = $request->m_title;
         $category->meta_description = $request->m_desc;
+
+        if($request->hasFile('m_img'))
+        {
+            $image = $request->file('m_img');
+            $uniqueName = 'Category-'. time().'-'. $image->getClientOriginalName();
+            $image->storeAs('category/', $uniqueName, 'public');
+            $category->image = $uniqueName;
+
+        }
+
+
+
         $category->save();
 
         Swal::success([
-            'title' => 'Profile INSERTED Successfully!',
+            'title' => 'Profile Added Successfully!',
         ]);
 
         return back();
@@ -45,8 +57,16 @@ class CategoryController extends Controller
 
     }
 
+    // Show
+    public function categoryShow()
+    {
+        $categories = Category::with('subCategories')->get();
+        // dd($categories);
+        return view('backend.category.show', compact('categories'));
+    }
+
 
 }
 
 
-// 12:52
+// 40:16

@@ -31,6 +31,7 @@ Route::middleware('auth')->name('dashboard.')->prefix('/dashboard')->group(funct
     //Category
     Route::get('/category-index',[CategoryController::class,'categoryIndex'])->name('category.index');
     Route::post('/category-index',[CategoryController::class,'categoryStore'])->name('category.store');
+    Route::get('/category-show',[CategoryController::class,'categoryShow'])->name('category.show');
 
 });
 

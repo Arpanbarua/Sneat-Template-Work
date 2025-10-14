@@ -150,7 +150,7 @@
             </li>
 
             <!--Categories-->
-            <li class="menu-item {{ Route::is('dashboard.category.index') ? 'active' : '' }}">
+            <li class="menu-item {{ Route::is('dashboard.category.index') || Route::is('dashboard.category.show') ? 'active' : '' }}">
               <a href="{{ route('dashboard.category.index') }}" class="menu-link">
                 {{-- <i class="menu-icon tf-icons bx bx-home-circle"></i> --}}
                 <iconify-icon icon="tabler:category-2" width="24" height="24"></iconify-icon>&nbsp;&nbsp;
