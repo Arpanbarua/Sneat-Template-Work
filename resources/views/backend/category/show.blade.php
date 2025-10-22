@@ -1,3 +1,14 @@
+@push('backend_css')
+    <style>
+         .icons_align
+         {
+            display: inline-flex;
+            align-items: center;
+            line-height: 0;
+         }
+    </style>
+@endpush
+
 @extends('backend.layout');
 @section('backend_content')
     <div class="card-header d-flex justify-content-between align-items-center">
@@ -7,7 +18,7 @@
 
     <div class="card-body table-responsive">
         <table class="table table-hover table-striped table-bordered">
-            <tr>
+            <tr class="text-center">
                 <th>Id</th>
                 <th>Title</th>
                 <th>Image</th>
@@ -38,11 +49,22 @@
                     </td>
                     <td>{{ $category->meta_title ? $category->meta_title : '--'  }}</td>
                     <td>{{ $category->meta_description ? $category->meta_description : '--' }}</td>
-                    <td></td>
+                    <td>
+                        @if ($category->parent)
+                         {{ $category->parent->title }}   
+                        @else
+                            <span class="badge text-bg-danger bg-danger">Not found</span>
+                        @endif
+                        
+                    </td>
                     <td>
                         <div class="d-flex align-items-center">
-                            <a href="#" class="btn btn-sm btn-success">Edit</a>
-                            <a href="#" class="btn btn-sm btn-danger ms-1">Delete</a>
+                            <a href="{{ route('dashboard.category.edit', $category->id) }}" class="btn btn-sm btn-success">
+                                <span class="icons_align"><iconify-icon icon="flowbite:edit-outline" width="24" height="24"></iconify-icon></span>
+                            </a>
+                            <a href="{{ route('dashboard.category.delete', $category->id) }}" class="btn btn-sm btn-danger ms-1">
+                                <span class="icons_align"><iconify-icon icon="ic:sharp-delete" width="24" height="24"></iconify-icon></span>
+                            </a>
                         </div>
                     </td>
                     
@@ -50,7 +72,10 @@
             </tr>
                 @empty
                  <tr>
-                    <td colspan="7" class="alert alert-danger">No Category Found</td>
+                    <td colspan="8">
+                        <span class="alert alert-danger text-center d-block">No Category Found</span>
+                        
+                    </td>
                 </tr>   
             @endforelse
         </table>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\Product\ProductController;
 use App\Http\Controllers\Backend\Profile\ProfileController;
 use App\Http\Controllers\Backend\Category\CategoryController;
 
@@ -32,6 +33,12 @@ Route::middleware('auth')->name('dashboard.')->prefix('/dashboard')->group(funct
     Route::get('/category-index',[CategoryController::class,'categoryIndex'])->name('category.index');
     Route::post('/category-index',[CategoryController::class,'categoryStore'])->name('category.store');
     Route::get('/category-show',[CategoryController::class,'categoryShow'])->name('category.show');
+    Route::get('/category-edit/{id}',[CategoryController::class,'categoryEdit'])->name('category.edit');
+    Route::put('/category-update/{id}',[CategoryController::class,'categoryUpdate'])->name('category.update');
+    Route::get('/category-delete/{id}',[CategoryController::class,'categoryDelete'])->name('category.delete');
+
+    // Product
+    Route::get('/product-index',[ProductController::class,'productIndex'])->name('product.index');
 
 });
 

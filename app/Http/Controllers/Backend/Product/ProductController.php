@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Http\Controllers\Backend\Product;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    // index
+    public function productIndex()
+    {
+        return view('backend.Product.index');
+    }
+}
