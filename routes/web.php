@@ -41,6 +41,9 @@ Route::middleware('auth')->name('dashboard.')->prefix('/dashboard')->group(funct
     Route::get('/product-index',[ProductController::class,'productIndex'])->name('product.index');
     Route::post('/product-store',[ProductController::class,'productStore'])->name('product.store');
     Route::get('/product-show',[ProductController::class,'productShow'])->name('product.show');
+    Route::get('/product-edit/{id}',[ProductController::class,'productEdit'])->name('product.edit');
+    Route::put('/product-update/{id}',[ProductController::class,'productUpdate'])->name('product.update');
+    Route::get('/product-delete/{id}',[ProductController::class,'productDelete'])->name('product.delete');
 
 });
 

@@ -30,13 +30,14 @@
         <a href="#" class="btn btn-primary">Show All Products</a>
     </div>
     <div class="card-body">
-        <form action="{{ route('dashboard.product.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('dashboard.product.update', $product->id) }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('put')
             <div class="row gx-3">
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="title" class="form-label">Product Title</label>
-                        <input type="text" name="title" id="title" class="form-control p-3" placeholder="Title">
+                        <input type="text" name="title" id="title" class="form-control p-3" placeholder="Title" value="{{ $product->title }}">
                     </div>
                     @error('title')
                         <p class="alert alert-danger">{{ $message }}</p>
@@ -52,7 +53,7 @@
                             <option value="WY">Wyoming</option> --}}
                             <option value="" selected disabled> ---  Select  --- </option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                <option {{ $product->category_id == $category->id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
 
@@ -67,8 +68,8 @@
                         <label for="is_stock" class="form-label">Stock</label>
                         <select class="form-select p-3" aria-label="Large select example" id="is_stock" name="is_stock">
                             <option selected disabled> --- Select --- </option>
-                            <option value="1">In stock</option>
-                            <option value="0">Unavailable</option>
+                            <option {{ $product->is_stock == 1 ? 'selected' : '' }} value="1">In stock</option>
+                            <option {{ $product->is_stock == 0 ? 'selected' : '' }} value="0">Unavailable</option>
 
                         </select>
                     </div>
@@ -84,8 +85,8 @@
                         <label for="status" class="form-label">status</label>
                         <select class="form-select p-3" aria-label="Large select example" name="status">
                             <option selected disabled> --- Select --- </option>
-                            <option value="1">Active</option>
-                            <option value="0">inactive</option>
+                            <option {{ $product->status == 1 ? 'selected' : '' }} value="1">Active</option>
+                            <option {{ $product->status == 0 ? 'selected' : '' }} value="0">inactive</option>
 
                         </select>
                     </div>
@@ -95,7 +96,7 @@
                  <div class="col-lg-3">
                     <div class="mb-3">
                         <label for="price" class="form-label">Product Price</label>
-                        <input type="number" name="price" id="price" class="form-control p-3"
+                        <input type="number" name="price" id="price" class="form-control p-3" value="{{ $product->price }}"
                             placeholder="e.g. 34.99">
                     </div>
                     @error('price')
@@ -105,7 +106,7 @@
                 <div class="col-lg-3">
                     <div class="mb-3">
                         <label for="disc_price" class="form-label">Discount</label>
-                        <input type="number" name="disc_price" id="disc_price" class="form-control p-3"
+                        <input type="number" name="disc_price" id="disc_price" class="form-control p-3" value="{{ $product->disc_price }}"
                             placeholder="e.g. 34.99">
                     </div>
 
@@ -120,14 +121,14 @@
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="description" class="form-label">Product Description</label> <br>
-                        <textarea id="summernote1" name="description" cols="20" rows="4"></textarea>
+                        <textarea id="summernote1" name="description" cols="20" rows="4">{{ $product->description }}</textarea>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="mb-3">
                         <label for="features" class="form-label">Product Features</label> <br>
-                        <textarea id="summernote2" name="features" cols="20" rows="4"></textarea>
+                        <textarea id="summernote2" name="features" cols="20" rows="4">{{ $product->features }}</textarea>
                     </div>
                 </div>
 

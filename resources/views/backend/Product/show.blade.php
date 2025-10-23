@@ -1,5 +1,15 @@
 @extends('backend.layout');
-
+@push('backend_css')
+    <style>
+        .styleicon
+        {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 0;
+        }
+    </style>
+@endpush
 
 @section('backend_content')
     <div class="card-header d-flex align-items-center justify-content-between">
@@ -48,12 +58,16 @@
                             </td>
                             {{-- <td>{{ !! $product->description  !! }}</td>
                             <td>{{ !! $product->features !! }}</td> --}}
-                            <td>{{!!  $product->description ?? '--'  !!}}</td>
-                            <td>{{!!  $product->features ?? '--'  !!}}</td>
+                            <td>{!!  $product->description ?? '--'  !!}</td>
+                            <td>{!!  $product->features ?? '--'  !!}</td>
                             <td>
                                 <div class="d-flex">
-                                <a href="#" class="btn btn-sm btn-success">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger ms-2">Delete</a>
+                                <a href="{{ route('dashboard.product.edit', $product->id) }}" class="btn btn-sm btn-success">
+                                    <span class="styleicon"><iconify-icon icon="bxs:edit" width="24" height="24"></iconify-icon></span>    
+                                </a>
+                                <a href="{{ route('dashboard.product.delete', $product->id) }}" class="btn btn-sm btn-danger ms-2">
+                                    <span class="styleicon"><iconify-icon icon="material-symbols-light:delete-sharp" width="24" height="24"></iconify-icon></span>
+                                </a>
                                 </div>
                             </td>
                         </tr>
@@ -71,3 +85,7 @@
         </div>
     </div>
 @endsection
+
+@push('backend_js')
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@3.0.0/dist/iconify-icon.min.js"></script>
+@endpush
