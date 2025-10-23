@@ -159,7 +159,7 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item {{ Route::is('dashboard.product.index') ? 'active open' : '' }} ">
+            <li class="menu-item {{ Route::is('dashboard.product.index') || Route::is('dashboard.product.show') ? 'active open' : '' }} ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Products">Products</div>
@@ -172,8 +172,8 @@
                   </a>
                 </li>
 
-                <li class="menu-item">
-                  <a href="#" class="menu-link">
+                <li class="menu-item {{ Route::is('dashboard.product.show') ? 'active' : '' }}">
+                  <a href="{{ route('dashboard.product.show') }}" class="menu-link">
                     <div data-i18n="Without menu">Show Products</div>
                   </a>
                 </li>

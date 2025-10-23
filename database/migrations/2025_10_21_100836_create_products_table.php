@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_stock')->default(0);
             $table->boolean('status')->default(1);
             $table->longtext('description')->nullable();
-
+            $table->longtext('features')->nullable();
             $table->timestamps();
         });
     }

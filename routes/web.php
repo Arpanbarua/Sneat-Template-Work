@@ -39,6 +39,8 @@ Route::middleware('auth')->name('dashboard.')->prefix('/dashboard')->group(funct
 
     // Product
     Route::get('/product-index',[ProductController::class,'productIndex'])->name('product.index');
+    Route::post('/product-store',[ProductController::class,'productStore'])->name('product.store');
+    Route::get('/product-show',[ProductController::class,'productShow'])->name('product.show');
 
 });
 
