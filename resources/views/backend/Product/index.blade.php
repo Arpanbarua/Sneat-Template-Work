@@ -27,7 +27,7 @@
 @section('backend_content')
     <div class="card-header d-flex align-items-center justify-content-between">
         <h4 class="card-title mb-0">Add Product</h4>
-        <a href="#" class="btn btn-primary">Show All Products</a>
+        <a href="{{ route('dashboard.product.show') }}" class="btn btn-primary">Show All Products</a>
     </div>
     <div class="card-body">
         <form action="{{ route('dashboard.product.store') }}" method="post" enctype="multipart/form-data">

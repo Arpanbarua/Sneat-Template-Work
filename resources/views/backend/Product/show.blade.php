@@ -14,7 +14,7 @@
 @section('backend_content')
     <div class="card-header d-flex align-items-center justify-content-between">
         <h4 class="card-title mb-0">Show Products</h4>
-        <a href="#" class="btn btn-primary">Add Products</a>
+        <a href="{{ route('dashboard.product.index') }}" class="btn btn-primary">Add Products</a>
     </div>
     <div class="card-body table-responsive">
         <div class="row">

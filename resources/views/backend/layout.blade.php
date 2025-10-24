@@ -159,7 +159,7 @@
             </li>
 
             <!-- Layouts -->
-            <li class="menu-item {{ Route::is('dashboard.product.index') || Route::is('dashboard.product.show') ? 'active open' : '' }} ">
+            <li class="menu-item {{ Route::is('dashboard.product.index') || Route::is('dashboard.product.show')|| Route::is('dashboard.product.image.index')||Route::is('dashboard.product.image.show') ? 'active open' : '' }} ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Products">Products</div>
@@ -168,15 +168,29 @@
               <ul class="menu-sub">
                 <li class="menu-item {{ Route::is('dashboard.product.index') ? 'active' : '' }}">
                   <a href="{{ route('dashboard.product.index') }}" class="menu-link">
-                    <div data-i18n="Without menu">Add Product</div>
+                    <div data-i18n="Add Product">Add Product</div>
                   </a>
                 </li>
 
                 <li class="menu-item {{ Route::is('dashboard.product.show') ? 'active' : '' }}">
                   <a href="{{ route('dashboard.product.show') }}" class="menu-link">
-                    <div data-i18n="Without menu">Show Products</div>
+                    <div data-i18n="Show Products">Show Products</div>
                   </a>
                 </li>
+
+                <li class="menu-item {{ Route::is('dashboard.product.image.index') ? 'active' : '' }}">
+                  <a href="{{ route('dashboard.product.image.index') }}" class="menu-link">
+                    <div data-i18n="Image Upload">Image Upload</div>
+                  </a>
+                </li>
+
+                 <li class="menu-item {{ Route::is('dashboard.product.image.show') ? 'active' : '' }}">
+                  <a href="{{ route('dashboard.product.image.show') }}" class="menu-link">
+                    <div data-i18n="Image Show">Image Show</div>
+                  </a>
+                </li>
+
+
                 
               </ul>
             </li>

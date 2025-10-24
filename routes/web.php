@@ -45,6 +45,11 @@ Route::middleware('auth')->name('dashboard.')->prefix('/dashboard')->group(funct
     Route::put('/product-update/{id}',[ProductController::class,'productUpdate'])->name('product.update');
     Route::get('/product-delete/{id}',[ProductController::class,'productDelete'])->name('product.delete');
 
+    //image
+    Route::get('/image-index',[ProductController::class,'productImageIndex'])->name('product.image.index');
+    Route::post('/image-store',[ProductController::class,'productImageStore'])->name('product.image.store');
+    Route::get('/image-show',[ProductController::class,'productImageShow'])->name('product.image.show');
+
 });
 
 

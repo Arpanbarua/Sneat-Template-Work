@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Product;
 
+use App\Models\Image\Image;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use SweetAlert2\Laravel\Swal;
@@ -59,6 +60,7 @@ class ProductController extends Controller
 
     public function productShow()
     {
+        
         $products = Product::latest()->simplePaginate(10);
         return view('backend.Product.show',compact('products'));
     }
@@ -108,6 +110,57 @@ class ProductController extends Controller
             'title' => 'Product Deleted! ',
         ]);
         return redirect()->route('dashboard.product.show');
+    }
+
+    // Image add
+
+    public function productImageIndex()
+    {
+        $products = Product::select('id','title')->get();
+        return view('backend.Product.image', compact('products'));
+    }
+
+    // Image Store
+
+    public function productImageStore(Request $request)
+    {
+        $request->validate([
+            'images' => 'required',
+            'product_id' => 'required',
+        ]);
+
+        // dd($request->all());
+
+        
+        if($request->hasFile('images'))
+        {
+            foreach($request->file('images') as $image)
+            {
+                $imguniquename = 'product-'.time(). Str::slug($image->getClientOriginalName()); 
+                // dd($imguniquename);
+                $image->storeAs('uploads/product/', $imguniquename, 'public');
+                Image::create([
+                    'image' => $imguniquename,
+                    'product_id' => $request->product_id,
+                ]);
+            }
+        }
+   
+        // $imagestore->save();
+        Swal::success([
+            'title' => 'Image(s) Added! ',
+        ]);
+
+        return redirect()->route('dashboard.product.image.show');
+        
+    }
+
+    // image show
+    public function productImageShow()
+    {
+        $images = Product::with('images')->simplePaginate(10);
+        // dd($images);
+        return view('backend.Product.imageview', compact('images'));
     }
 
 
